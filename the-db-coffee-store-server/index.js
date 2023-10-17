@@ -37,6 +37,12 @@ async function run() {
 
     const coffeeCollection = client.db('coffeeDB').collection('coffee');
 
+    app.get('/coffee', async(req, res) => {
+      const cursor = coffeeCollection.find();
+      const result = await cursor.toArray();
+      res.send(result)
+  })
+
     app.post('/coffee', async(req, res)=>{
       const newCoffee = req.body;
       console.log(newCoffee);
@@ -50,24 +56,11 @@ async function run() {
     console.log("Pinged your deployment. You successfully connected to MongoDB!");
   } finally {
     // Ensures that the client will close when you finish/error
-    await client.close();
+    // await client.close();
   }
 }
 run().catch(console.dir);
 
-const coffeeCollection = client('coffeeDB').collection('coffee');
-
-app.get('/coffee', (req, res) => {
-    const cursor = coffeeCollection.find();
-    const result = await cursor.toArray();
-    res.send(result)
-})
-
-app.post('/coffee', (req, res) => {
-  const newCoffee = req.body;
-  console.log(newCoffee)
-  const result = await
-})
 
 app.listen(port, () => {
     console.log(`Coffee Making Server is running on Port: ${port}`)
