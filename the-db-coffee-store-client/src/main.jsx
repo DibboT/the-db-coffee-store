@@ -8,6 +8,8 @@ import {
 } from "react-router-dom";
 import AddCoffee from './components/AddCoffee.jsx';
 import UpdateCoffee from './components/UpdateCoffee.jsx';
+import SignUp from './SignUp.jsx';
+import SignIn from './SignIn.jsx';
 
 const router = createBrowserRouter([
   {
@@ -21,6 +23,14 @@ const router = createBrowserRouter([
   {
     path: "updateCoffee",
     element: <UpdateCoffee></UpdateCoffee>
+  },
+  {
+    path: "/signup",
+    element: <SignUp></SignUp>
+  },
+  {
+    path: "/signin",
+    element: <SignIn></SignIn>
   }
 ]);
 
